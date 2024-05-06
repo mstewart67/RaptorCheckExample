@@ -1,0 +1,61 @@
+-DRCM_58NN_112_2202
+-I"C:/DEV_AREA/models/MATLAB2023a/rcm112_stack_check"
+-I"C:/DEV_AREA/models/MATLAB2023a/rcm112_stack_check/rcm112_stack_check_raptor_rtw"
+-I"C:/Program Files/MATLAB/R2023a/extern/include"
+-I"C:/Program Files/MATLAB/R2023a/simulink/include"
+-I"C:/Program Files/MATLAB/R2023a/rtw/c/src"
+-I"C:/Program Files/MATLAB/R2023a/rtw/c/src/ext_mode/common"
+-I"C:/Program Files/MATLAB/R2023a/rtw/c/ert"
+-I"C:/DEV_AREA/raptor/Source/GCM-58NN-112/lib"
+-I"C:/DEV_AREA/raptor/Source/GCM-58NN-112/lib/API"
+-I"C:/DEV_AREA/raptor/Source/GCM-58NN-112/lib/API/Sbc"
+-I"C:/DEV_AREA/raptor/Source/GCM-58NN-112/lib/API/Common"
+-I"C:/DEV_AREA/raptor/Source/GCM-58NN-112/lib/API/EthTcpip"
+-I"C:/DEV_AREA/raptor/Source/GCM-58NN-112/lib/API/Sbc"
+-I"C:/DEV_AREA/raptor/Source/GCM-58NN-112/lib/API/Common"
+-I"C:/DEV_AREA/raptor/Source/GCM-58NN-112/lib/API/EthTcpip/port/compiler"
+-I"C:/DEV_AREA/raptor/Source/GCM-58NN-112/lib/API/EthTcpip/port/cpu"
+-I"C:/DEV_AREA/raptor/Source/GCM-58NN-112/lib/API/EthTcpip/port/cpu/spc58"
+-I"C:/DEV_AREA/raptor/Source/GCM-58NN-112/lib/API/EthTcpip/service"
+-I"C:/DEV_AREA/raptor/Source/GCM-58NN-112/lib/API/EthTcpip/service/autoip"
+-I"C:/DEV_AREA/raptor/Source/GCM-58NN-112/lib/API/EthTcpip/service/dhcp"
+-I"C:/DEV_AREA/raptor/Source/GCM-58NN-112/lib/API/EthTcpip/service/link"
+-I"C:/DEV_AREA/raptor/Source/GCM-58NN-112/lib/API/EthTcpip/service/ping"
+-I"C:/DEV_AREA/raptor/Source/GCM-58NN-112/lib/API/EthTcpip/service/serial"
+-I"C:/DEV_AREA/raptor/Source/GCM-58NN-112/lib/API/EthTcpip/stack"
+-I"C:/DEV_AREA/raptor/Source/GCM-58NN-112/lib/API/RCM_58NN_112_2202"
+-DHIGHTEC
+-mcpu=z4256n3
+-mhard-float
+-msdata=eabi
+-mno-spe
+-mvle
+-mfloat-gprs=single
+-W
+-Wall
+-Wbad-function-cast
+-Werror-implicit-function-declaration
+-Winline
+-Wpointer-arith
+-Wundef
+-Wfloat-equal
+-Wdouble-promotion
+-Wno-sign-conversion
+-Wno-unused-parameter
+-Wno-unused-variable
+-Wno-pointer-to-int-cast
+-Wno-return-type
+-fno-builtin
+-fno-common
+-fomit-frame-pointer
+-fsingle-precision-constant
+-fshort-double
+-fno-section-anchors
+-ffunction-sections
+-fdata-sections
+-msmall-data=8
+-msmall-const=8
+-Os
+-g3
+-gdwarf-2
+-c

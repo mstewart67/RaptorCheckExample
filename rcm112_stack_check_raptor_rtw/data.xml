@@ -1,0 +1,937 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+    <Data>
+        
+            
+
+        <Item Name="FgndTasksStopped">
+            <Block>&lt;S20&gt;/raptor_data_def</Block>
+            <Variable>RAMVariables.rap_ds_FgndTasksStopped</Variable>	
+            <Type>Measurement</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>0</Min>
+            <Max>1</Max>
+            <Unit>Bool</Unit>
+            <Help>Boolean indicating foreground tasks stopped</Help>
+			<Format>5.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|PowerUp_Down</Function>
+        </Item>
+        
+            
+
+        <Item Name="Wake_CAN5_SleepDelayTime">
+            <Block>&lt;S10&gt;/raptor_adjustment</Block>
+            <Variable>EEVariables_DEFAULT.rap_ds_Wake_CAN5_SleepDelayTime</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>0.05</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit>sec</Unit>
+            <Help>make sure this is long enough that we dont trigger a ton of EEPROM writes between messages</Help>
+			<Format>0.3</Format>
+            <AccessLevel>4</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|PowerUp_Down</Function>
+        </Item>
+        
+            
+
+        <Item Name="Wake_ETH_SleepDelayTime">
+            <Block>&lt;S11&gt;/raptor_adjustment</Block>
+            <Variable>EEVariables_DEFAULT.rap_ds_Wake_ETH_SleepDelayTime</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>0.05</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit>sec</Unit>
+            <Help>make sure this is long enough that we dont trigger a ton of EEPROM writes between messages</Help>
+			<Format>0.3</Format>
+            <AccessLevel>4</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|PowerUp_Down</Function>
+        </Item>
+        
+            
+
+        <Item Name="Wake_LIN2_SleepDelayTime">
+            <Block>&lt;S12&gt;/raptor_adjustment</Block>
+            <Variable>EEVariables_DEFAULT.rap_ds_Wake_LIN2_SleepDelayTime</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>0.05</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit>sec</Unit>
+            <Help>make sure this is long enough that we dont trigger a ton of EEPROM writes between messages</Help>
+			<Format>0.3</Format>
+            <AccessLevel>4</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|PowerUp_Down</Function>
+        </Item>
+        
+            
+
+        <Item Name="KeySwHiTimeThr">
+            <Block>&lt;S18&gt;/raptor_adjustment3</Block>
+            <Variable>EEVariables_DEFAULT.rap_ds_KeySwHiTimeThr</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit>sec</Unit>
+            <Help>State high time threshold</Help>
+			<Format>5.2</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|PowerUp_Down</Function>
+        </Item>
+        
+            
+
+        <Item Name="KeySwLoTimeThr">
+            <Block>&lt;S18&gt;/raptor_adjustment4</Block>
+            <Variable>EEVariables_DEFAULT.rap_ds_KeySwLoTimeThr</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit>sec</Unit>
+            <Help>State low time threshold</Help>
+			<Format>5.2</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|PowerUp_Down</Function>
+        </Item>
+        
+            
+
+        <Item Name="CANWakeIndicator">
+            <Block>&lt;S8&gt;/raptor_measurement</Block>
+            <Variable>RAMVariables.rap_ds_CANWakeIndicator</Variable>	
+            <Type>Measurement</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>0</Min>
+            <Max>1</Max>
+            <Unit></Unit>
+            <Help></Help>
+			<Format>5.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|PowerUp_Down</Function>
+        </Item>
+        
+            
+
+        <Item Name="EthWakeIndicator">
+            <Block>&lt;S8&gt;/raptor_measurement1</Block>
+            <Variable>RAMVariables.rap_ds_EthWakeIndicator</Variable>	
+            <Type>Measurement</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>0</Min>
+            <Max>1</Max>
+            <Unit></Unit>
+            <Help></Help>
+			<Format>5.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|PowerUp_Down</Function>
+        </Item>
+        
+            
+
+        <Item Name="EthLinkStatus">
+            <Block>&lt;S8&gt;/raptor_measurement2</Block>
+            <Variable>RAMVariables.rap_ds_EthLinkStatus</Variable>	
+            <Type>Measurement</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>0</Min>
+            <Max>1</Max>
+            <Unit></Unit>
+            <Help></Help>
+			<Format>5.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|PowerUp_Down</Function>
+        </Item>
+        
+            
+
+        <Item Name="LINWakeIndicator">
+            <Block>&lt;S8&gt;/raptor_measurement3</Block>
+            <Variable>RAMVariables.rap_ds_LINWakeIndicator</Variable>	
+            <Type>Measurement</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>0</Min>
+            <Max>1</Max>
+            <Unit></Unit>
+            <Help></Help>
+			<Format>5.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|PowerUp_Down</Function>
+        </Item>
+        
+            
+
+        <Item Name="Wake_CAN5_RxCount">
+            <Block>&lt;S8&gt;/raptor_measurement5</Block>
+            <Variable>RAMVariables.rap_ds_Wake_CAN5_RxCount</Variable>	
+            <Type>Measurement</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit></Unit>
+            <Help></Help>
+			<Format>5.0</Format>
+            <AccessLevel>4</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|PowerUp_Down</Function>
+        </Item>
+        
+            
+
+        <Item Name="Wake_CAN5_SleepDelayTTmr">
+            <Block>&lt;S10&gt;/raptor_measurement</Block>
+            <Variable>RAMVariables.rap_ds_Wake_CAN5_SleepDelayTTmr</Variable>	
+            <Type>Measurement</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>0.05</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit>sec</Unit>
+            <Help>time that gets compared to Wake_CAN5_SleepDelayTime</Help>
+			<Format>0.3</Format>
+            <AccessLevel>4</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|PowerUp_Down</Function>
+        </Item>
+        
+            
+
+        <Item Name="Wake_ETH_SleepDelayTTmr">
+            <Block>&lt;S11&gt;/raptor_measurement</Block>
+            <Variable>RAMVariables.rap_ds_Wake_ETH_SleepDelayTTmr</Variable>	
+            <Type>Measurement</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>0.05</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit>sec</Unit>
+            <Help>time that gets compared to Wake_ETH_SleepDelayTime</Help>
+			<Format>0.3</Format>
+            <AccessLevel>4</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|PowerUp_Down</Function>
+        </Item>
+        
+            
+
+        <Item Name="Wake_LIN2_SleepDelayTTmr">
+            <Block>&lt;S12&gt;/raptor_measurement</Block>
+            <Variable>RAMVariables.rap_ds_Wake_LIN2_SleepDelayTTmr</Variable>	
+            <Type>Measurement</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>0.05</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit>sec</Unit>
+            <Help>time that gets compared to Wake_LIN2_SleepDelayTime</Help>
+			<Format>0.3</Format>
+            <AccessLevel>4</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|PowerUp_Down</Function>
+        </Item>
+        
+            
+
+        <Item Name="KeySw_Bgnd">
+            <Block>&lt;S8&gt;/raptor_data_def</Block>
+            <Variable>RAMVariables.rap_ds_KeySw_Bgnd</Variable>	
+            <Type>Measurement</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>0</Min>
+            <Max>1</Max>
+            <Unit>Bool</Unit>
+            <Help>Key switch reading from background task</Help>
+			<Format>5.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|PowerUp_Down</Function>
+        </Item>
+        
+            
+
+        <Item Name="KeepModuleOn">
+            <Block>&lt;S8&gt;/raptor_data_def1</Block>
+            <Variable>RAMVariables.rap_ds_KeepModuleOn</Variable>	
+            <Type>Measurement</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>0</Min>
+            <Max>1</Max>
+            <Unit>Bool</Unit>
+            <Help>Boolean indicating module to be kept on</Help>
+			<Format>5.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|PowerUp_Down</Function>
+        </Item>
+        
+            
+
+        <Item Name="MPRD_EN">
+            <Block>&lt;S8&gt;/raptor_data_def2</Block>
+            <Variable>RAMVariables.rap_ds_MPRD_EN</Variable>	
+            <Type>Measurement</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>0</Min>
+            <Max>1</Max>
+            <Unit>Bool</Unit>
+            <Help>Enable signal for Main Power Relay Driver.</Help>
+			<Format>5.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|PowerUp_Down</Function>
+        </Item>
+        
+            
+
+        <Item Name="Wake_Source">
+            <Block>&lt;S8&gt;/raptor_data_def3</Block>
+            <Variable>RAMVariables.rap_ds_Wake_Source</Variable>	
+            <Type>Measurement</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit>BITFeild</Unit>
+            <Help>Source of the Current Wake.</Help>
+			<Format>5.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|PowerUp_Down</Function>
+        </Item>
+        
+            
+
+        <Item Name="SensorPowerEnable">
+            <Block>&lt;S4&gt;/raptor_adjustment</Block>
+            <Variable>EEVariables_DEFAULT.rap_ds_SensorPowerEnable</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>0</Min>
+            <Max>1</Max>
+            <Unit></Unit>
+            <Help></Help>
+			<Format>5.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <EnumNames>
+				<EnumItem Value = "0">False</EnumItem>
+				<EnumItem Value = "1">True</EnumItem>
+            </EnumNames>			
+            <Function>Enables</Function>
+        </Item>
+        
+            
+
+        <Item Name="Counter">
+            <Block>&lt;S1&gt;/raptor_measurement</Block>
+            <Variable>RAMVariables.rap_ds_Counter</Variable>	
+            <Type>Measurement</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit></Unit>
+            <Help></Help>
+			<Format>5.2</Format>
+            <AccessLevel>4</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>rcm112_stack_check|Foreground</Function>
+        </Item>
+        
+            
+
+        <Item Name="XCP1__XCP_BC_ID">
+            <Block>&lt;S3&gt;/BC_ID</Block>
+            <Variable>EEVariables_DEFAULT.rap_ds_XCP1__XCP_BC_ID</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit></Unit>
+            <Help>CAN message ID used to identify XCP targets on the CAN bus. This should be the same for all ECUs on the CAN bus. This is how Raptor-Cal discovers ECUs on the CAN bus.</Help>
+			<Format>5.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|XCP</Function>
+        </Item>
+        
+            
+
+        <Item Name="XCP1__XCP_RX_ID">
+            <Block>&lt;S3&gt;/RX_ID</Block>
+            <Variable>EEVariables_DEFAULT.rap_ds_XCP1__XCP_RX_ID</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit></Unit>
+            <Help>CAN message ID that the module will receive CMD and STIM commands from the calibration tool on.</Help>
+			<Format>5.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|XCP</Function>
+        </Item>
+        
+            
+
+        <Item Name="XCP1__XCP_TX_ID">
+            <Block>&lt;S3&gt;/TX_ID</Block>
+            <Variable>EEVariables_DEFAULT.rap_ds_XCP1__XCP_TX_ID</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit></Unit>
+            <Help>CAN message ID that the module will send RES, ERR, EV, SERV and DAQ commands to the calibration tool on.</Help>
+			<Format>5.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <Function>System|XCP</Function>
+        </Item>
+        
+            
+
+        <Item Name="ModelName">
+            <Block>&lt;Root&gt;/raptor_target_def</Block>
+            <Variable>CONSTVariables.rap_ds_ModelName</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>18</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit></Unit>
+            <Help>Name of model</Help>
+			<Format>3.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>1</ReadOnly>
+            <DisplayType>ASCII</DisplayType>
+        </Item>
+        
+            
+
+        <Item Name="BuildNumber">
+            <Block>&lt;Root&gt;/raptor_target_def</Block>
+            <Variable>CONSTVariables.rap_ds_BuildNumber</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit></Unit>
+            <Help>Model build number.</Help>
+			<Format>3.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>1</ReadOnly>
+        </Item>
+        
+            
+
+        <Item Name="MatlabVersion">
+            <Block>&lt;Root&gt;/raptor_target_def</Block>
+            <Variable>CONSTVariables.rap_ds_MatlabVersion</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>13</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit></Unit>
+            <Help>Matlab version used for build.</Help>
+			<Format>3.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>1</ReadOnly>
+            <DisplayType>ASCII</DisplayType>
+        </Item>
+        
+            
+
+        <Item Name="RaptorVersion">
+            <Block>&lt;Root&gt;/raptor_target_def</Block>
+            <Variable>CONSTVariables.rap_ds_RaptorVersion</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>21</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit></Unit>
+            <Help>Raptor version used for build.</Help>
+			<Format>3.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>1</ReadOnly>
+            <DisplayType>ASCII</DisplayType>
+        </Item>
+        
+            
+
+        <Item Name="SwIdTxt">
+            <Block>&lt;Root&gt;/raptor_target_def</Block>
+            <Variable>CONSTVariables.rap_ds_SwIdTxt</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>22</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit></Unit>
+            <Help>Software name for this build.</Help>
+			<Format>3.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>1</ReadOnly>
+            <DisplayType>ASCII</DisplayType>
+        </Item>
+        
+            
+
+        <Item Name="CalIdTxt">
+            <Block>&lt;Root&gt;/raptor_target_def</Block>
+            <Variable>CONSTVariables.rap_ds_CalIdTxt</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>26</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit></Unit>
+            <Help>Calibration ID for this Software Package.</Help>
+			<Format>3.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <DisplayType>ASCII</DisplayType>
+        </Item>
+        
+            
+
+        <Item Name="BuildUID">
+            <Block>&lt;Root&gt;/raptor_target_def</Block>
+            <Variable>CONSTVariables.rap_ds_BuildUID</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>21</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit></Unit>
+            <Help>Unique build ID for this software.</Help>
+			<Format>3.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>1</ReadOnly>
+            <DisplayType>ASCII</DisplayType>
+        </Item>
+        
+            
+
+        <Item Name="IdTableRev">
+            <Block>&lt;Root&gt;/raptor_target_def</Block>
+            <Variable>CONSTVariables.rap_ds_IdTableRev</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit></Unit>
+            <Help>IdTableRev for the model (XCP device ids).</Help>
+			<Format>3.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>1</ReadOnly>
+            <DisplayType>uint32</DisplayType>
+        </Item>
+        
+            
+
+        <Item Name="HardwareType">
+            <Block>&lt;Root&gt;/raptor_target_def</Block>
+            <Variable>CONSTVariables.rap_ds_HardwareType</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit></Unit>
+            <Help>Hardware type for the target.</Help>
+			<Format>3.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>1</ReadOnly>
+            <DisplayType>uint32</DisplayType>
+        </Item>
+        
+            
+
+        <Item Name="DateStamp">
+            <Block>&lt;Root&gt;/raptor_target_def</Block>
+            <Variable>CONSTVariables.rap_ds_DateStamp</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>20</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit></Unit>
+            <Help>Date and time the model was built.</Help>
+			<Format>3.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>1</ReadOnly>
+            <DisplayType>ASCII</DisplayType>
+        </Item>
+        
+            
+
+        <Item Name="XCP1__XCP_Security">
+            <Block>XCP_Security</Block>
+            <Variable>EEVariables_DEFAULT.rap_ds_XCP1__XCP_Security</Variable>	
+            <Type>Adjustment</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>0</Min>
+            <Max>65535</Max>
+            <Unit>enum</Unit>
+            <Help>Calibration to change XCP security, takes effect at next power-up.</Help>
+			<Format>6.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <EnumNames>
+				<EnumItem Value = "0">None</EnumItem>
+				<EnumItem Value = "20037">Standard</EnumItem>
+            </EnumNames>			
+            <Function>System | XCP</Function>
+        </Item>
+        <Item Name="Reset_History">
+            <Block>Platform Variable</Block>
+            <Variable>Bios_Fee_Page0.ResetHist</Variable>	
+            <Type>Measurement</Type>
+            <NumRows>10</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>0</Min>
+            <Max>255</Max>
+            <Unit>Sec</Unit>
+            <Help>Reset History.</Help>
+			<Format>4.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <EnumNames>
+				<EnumItem Value = "0">UNKNOWN_RESET</EnumItem>
+				<EnumItem Value = "1">PROMEMORY</EnumItem>
+				<EnumItem Value = "2">PROTIME</EnumItem>
+				<EnumItem Value = "3">PROARRIVAL</EnumItem>
+				<EnumItem Value = "4">PROLOCKED</EnumItem>
+				<EnumItem Value = "5">PROEXCEPTION</EnumItem>
+				<EnumItem Value = "6">PROSTACKFAULT</EnumItem>
+				<EnumItem Value = "17">ERR_OS_ACCESS</EnumItem>
+				<EnumItem Value = "18">ERR_OS_CALLEVEL</EnumItem>
+				<EnumItem Value = "19">ERR_OS_ID</EnumItem>
+				<EnumItem Value = "20">ERR_OS_LIMIT</EnumItem>
+				<EnumItem Value = "21">ERR_OS_NOFUNC</EnumItem>
+				<EnumItem Value = "22">ERR_OS_RESOURCE</EnumItem>
+				<EnumItem Value = "23">ERR_OS_STATE</EnumItem>
+				<EnumItem Value = "24">ERR_OS_VALUE</EnumItem>
+				<EnumItem Value = "25">ERR_OS_SERVICEID</EnumItem>
+				<EnumItem Value = "26">ERR_OS_ILLEGAL_ADDRESS</EnumItem>
+				<EnumItem Value = "27">ERR_OS_MISSINGEND</EnumItem>
+				<EnumItem Value = "28">ERR_OS_DISABLEDINT</EnumItem>
+				<EnumItem Value = "29">ERR_OS_STACKFAULT</EnumItem>
+				<EnumItem Value = "30">ERR_OS_CORE</EnumItem>
+				<EnumItem Value = "31">ERR_OS_SPINLOCK</EnumItem>
+				<EnumItem Value = "32">ERR_OS_INT_DEADLOCK</EnumItem>
+				<EnumItem Value = "33">ERR_OS_NEST_DEADLOCK</EnumItem>
+				<EnumItem Value = "34">ERR_OS_PARAM_POINTER</EnumItem>
+				<EnumItem Value = "35">ERR_OS_SYS_NO_RESTART</EnumItem>
+				<EnumItem Value = "36">ERR_OS_SYS_RESTART</EnumItem>
+				<EnumItem Value = "37">ERR_OS_SYS_OVERRUN</EnumItem>
+				<EnumItem Value = "38">ERR_OS_SYS_XC_QFULL</EnumItem>
+				<EnumItem Value = "160">POWER_OFF_RESET</EnumItem>
+				<EnumItem Value = "161">SOFT_RESET_REQ</EnumItem>
+				<EnumItem Value = "176">BOOT_REQUEST</EnumItem>
+            </EnumNames>			
+            <Function>System | Platform</Function>
+        </Item>
+        <Item Name="ResetReason">
+            <Block>Platform Variable</Block>
+            <Variable>Bios_Fee_Page0.resetCause</Variable>	
+            <Type>Measurement</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1</Gain>
+            <Offset>0.0</Offset>					
+            <Min>0</Min>
+            <Max>255</Max>
+            <Unit>NA</Unit>
+            <Help>The last reset reason.</Help>
+			<Format>4.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <EnumNames>
+				<EnumItem Value = "0">UNKNOWN_RESET</EnumItem>
+				<EnumItem Value = "1">PROMEMORY</EnumItem>
+				<EnumItem Value = "2">PROTIME</EnumItem>
+				<EnumItem Value = "3">PROARRIVAL</EnumItem>
+				<EnumItem Value = "4">PROLOCKED</EnumItem>
+				<EnumItem Value = "5">PROEXCEPTION</EnumItem>
+				<EnumItem Value = "6">PROSTACKFAULT</EnumItem>
+				<EnumItem Value = "17">ERR_OS_ACCESS</EnumItem>
+				<EnumItem Value = "18">ERR_OS_CALLEVEL</EnumItem>
+				<EnumItem Value = "19">ERR_OS_ID</EnumItem>
+				<EnumItem Value = "20">ERR_OS_LIMIT</EnumItem>
+				<EnumItem Value = "21">ERR_OS_NOFUNC</EnumItem>
+				<EnumItem Value = "22">ERR_OS_RESOURCE</EnumItem>
+				<EnumItem Value = "23">ERR_OS_STATE</EnumItem>
+				<EnumItem Value = "24">ERR_OS_VALUE</EnumItem>
+				<EnumItem Value = "25">ERR_OS_SERVICEID</EnumItem>
+				<EnumItem Value = "26">ERR_OS_ILLEGAL_ADDRESS</EnumItem>
+				<EnumItem Value = "27">ERR_OS_MISSINGEND</EnumItem>
+				<EnumItem Value = "28">ERR_OS_DISABLEDINT</EnumItem>
+				<EnumItem Value = "29">ERR_OS_STACKFAULT</EnumItem>
+				<EnumItem Value = "30">ERR_OS_CORE</EnumItem>
+				<EnumItem Value = "31">ERR_OS_SPINLOCK</EnumItem>
+				<EnumItem Value = "32">ERR_OS_INT_DEADLOCK</EnumItem>
+				<EnumItem Value = "33">ERR_OS_NEST_DEADLOCK</EnumItem>
+				<EnumItem Value = "34">ERR_OS_PARAM_POINTER</EnumItem>
+				<EnumItem Value = "35">ERR_OS_SYS_NO_RESTART</EnumItem>
+				<EnumItem Value = "36">ERR_OS_SYS_RESTART</EnumItem>
+				<EnumItem Value = "37">ERR_OS_SYS_OVERRUN</EnumItem>
+				<EnumItem Value = "38">ERR_OS_SYS_XC_QFULL</EnumItem>
+				<EnumItem Value = "160">POWER_OFF_RESET</EnumItem>
+				<EnumItem Value = "161">SOFT_RESET_REQ</EnumItem>
+				<EnumItem Value = "176">BOOT_REQUEST</EnumItem>
+            </EnumNames>			
+            <Function>System | Platform</Function>
+        </Item>
+        <Item Name="ResetTask">
+            <Block>Platform Variable</Block>
+            <Variable>Bios_Fee_Page0.resetTask</Variable>	
+            <Type>Measurement</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1</Gain>
+            <Offset>0.0</Offset>					
+            <Min>0</Min>
+            <Max>255</Max>
+            <Unit>NA</Unit>
+            <Help>The last reset reason.</Help>
+			<Format>4.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <EnumNames>
+				<EnumItem Value = "0">BIOS_RTOS_TASK_NEBPS_INIT</EnumItem>
+				<EnumItem Value = "1">BIOS_RTOS_TASK_NEBPS_1MS</EnumItem>
+				<EnumItem Value = "2">BIOS_RTOS_TASK_NEBPS_10MS</EnumItem>
+				<EnumItem Value = "3">BIOS_RTOS_TASK_NEBPS_100MS</EnumItem>
+				<EnumItem Value = "4">BIOS_RTOS_TASK_NEBPS_IDLE</EnumItem>
+				<EnumItem Value = "5">BIOS_RTOS_TASK_ASW0_INIT</EnumItem>
+				<EnumItem Value = "6">BIOS_RTOS_TASK_ASW0_1MS</EnumItem>
+				<EnumItem Value = "7">BIOS_RTOS_TASK_ASW0_5MS</EnumItem>
+				<EnumItem Value = "8">BIOS_RTOS_TASK_ASW0_10MS</EnumItem>
+				<EnumItem Value = "9">BIOS_RTOS_TASK_ASW0_20MS</EnumItem>
+				<EnumItem Value = "10">BIOS_RTOS_TASK_ASW0_50MS</EnumItem>
+				<EnumItem Value = "11">BIOS_RTOS_TASK_ASW0_100MS</EnumItem>
+				<EnumItem Value = "12">BIOS_RTOS_TASK_ASW0_250MS</EnumItem>
+				<EnumItem Value = "13">BIOS_RTOS_TASK_ASW0_500MS</EnumItem>
+				<EnumItem Value = "14">BIOS_RTOS_TASK_ASW0_1000MS</EnumItem>
+				<EnumItem Value = "15">BIOS_RTOS_TASK_ASW0_INT</EnumItem>
+				<EnumItem Value = "16">BIOS_RTOS_TASK_ASW0_IDLE</EnumItem>
+				<EnumItem Value = "17">BIOS_RTOS_TASK_ASW1_INIT</EnumItem>
+				<EnumItem Value = "18">BIOS_RTOS_TASK_ASW1_1MS</EnumItem>
+				<EnumItem Value = "19">BIOS_RTOS_TASK_ASW1_10MS</EnumItem>
+				<EnumItem Value = "20">BIOS_RTOS_TASK_ASW1_100MS</EnumItem>
+				<EnumItem Value = "21">BIOS_RTOS_TASK_ASW1_IDLE</EnumItem>
+				<EnumItem Value = "22">BIOS_RTOS_ISR_OS_TICK</EnumItem>
+				<EnumItem Value = "23">BIOS_RTOS_ISR_LONG_TIMER</EnumItem>
+				<EnumItem Value = "24">BIOS_RTOS_ISR_PWM_IN_00</EnumItem>
+				<EnumItem Value = "25">BIOS_RTOS_ISR_PWM_IN_01</EnumItem>
+				<EnumItem Value = "26">BIOS_RTOS_ISR_PWM_IN_02</EnumItem>
+				<EnumItem Value = "27">BIOS_RTOS_ISR_PWM_IN_03</EnumItem>
+				<EnumItem Value = "28">BIOS_RTOS_ISR_PWM_IN_04</EnumItem>
+				<EnumItem Value = "29">BIOS_RTOS_ISR_PWM_IN_05</EnumItem>
+				<EnumItem Value = "30">BIOS_RTOS_ISR_PWM_IN_06</EnumItem>
+				<EnumItem Value = "31">BIOS_RTOS_ISR_PWM_IN_07</EnumItem>
+				<EnumItem Value = "32">BIOS_RTOS_ISR_PWM_IN_08</EnumItem>
+				<EnumItem Value = "33">BIOS_RTOS_ISR_PWM_IN_09</EnumItem>
+				<EnumItem Value = "34">BIOS_RTOS_ISR_PWM_IN_10</EnumItem>
+				<EnumItem Value = "35">BIOS_RTOS_ISR_PWM_IN_11</EnumItem>
+				<EnumItem Value = "36">BIOS_RTOS_ISR_PWM_IN_12</EnumItem>
+				<EnumItem Value = "37">BIOS_RTOS_ISR_PWM_IN_13</EnumItem>
+				<EnumItem Value = "38">BIOS_RTOS_ISR_PWM_IN_14</EnumItem>
+				<EnumItem Value = "39">BIOS_RTOS_ISR_PWM_IN_15</EnumItem>
+				<EnumItem Value = "40">BIOS_RTOS_ISR_PWM_IN_16</EnumItem>
+				<EnumItem Value = "41">BIOS_RTOS_ISR_PWM_IN_17</EnumItem>
+				<EnumItem Value = "42">BIOS_RTOS_ISR_PWM_IN_18</EnumItem>
+				<EnumItem Value = "43">BIOS_RTOS_ISR_PWM_IN_19</EnumItem>
+				<EnumItem Value = "44">BIOS_RTOS_ISR_PWM_IN_20</EnumItem>
+				<EnumItem Value = "45">BIOS_RTOS_ISR_PWM_IN_21</EnumItem>
+				<EnumItem Value = "46">BIOS_RTOS_ISR_PWM_IN_22</EnumItem>
+				<EnumItem Value = "47">BIOS_RTOS_ISR_PWM_IN_23</EnumItem>
+				<EnumItem Value = "48">BIOS_RTOS_ISR_PWM_IN_24</EnumItem>
+				<EnumItem Value = "49">BIOS_RTOS_ISR_PWM_IN_25</EnumItem>
+				<EnumItem Value = "50">BIOS_RTOS_ISR_PWM_IN_26</EnumItem>
+				<EnumItem Value = "51">BIOS_RTOS_ISR_PWM_IN_27</EnumItem>
+				<EnumItem Value = "52">BIOS_RTOS_ISR_PWM_IN_28</EnumItem>
+				<EnumItem Value = "53">BIOS_RTOS_ISR_PWM_IN_29</EnumItem>
+				<EnumItem Value = "54">BIOS_RTOS_ISR_PWM_IN_30</EnumItem>
+				<EnumItem Value = "55">BIOS_RTOS_ISR_PWM_IN_31</EnumItem>
+				<EnumItem Value = "56">BIOS_RTOS_ISR_PWM_IN_32</EnumItem>
+				<EnumItem Value = "57">BIOS_RTOS_ISR_PWM_IN_33</EnumItem>
+				<EnumItem Value = "58">BIOS_RTOS_ISR_PWM_IN_34</EnumItem>
+				<EnumItem Value = "59">BIOS_RTOS_ISR_PWM_IN_35</EnumItem>
+				<EnumItem Value = "60">BIOS_RTOS_ISR_PWM_IN_36</EnumItem>
+				<EnumItem Value = "61">BIOS_RTOS_ISR_PWM_IN_37</EnumItem>
+				<EnumItem Value = "62">BIOS_RTOS_ISR_PWM_IN_38</EnumItem>
+				<EnumItem Value = "63">BIOS_RTOS_ISR_PWM_IN_39</EnumItem>
+				<EnumItem Value = "64">BIOS_RTOS_ISR_PWM_IN_40</EnumItem>
+				<EnumItem Value = "65">BIOS_RTOS_ISR_PWM_IN_41</EnumItem>
+				<EnumItem Value = "66">BIOS_RTOS_ISR_PWM_IN_42</EnumItem>
+				<EnumItem Value = "67">BIOS_RTOS_ISR_PWM_IN_43</EnumItem>
+				<EnumItem Value = "68">BIOS_RTOS_ISR_PWM_IN_44</EnumItem>
+				<EnumItem Value = "69">BIOS_RTOS_ISR_PWM_IN_45</EnumItem>
+				<EnumItem Value = "70">BIOS_RTOS_ISR_PWM_IN_46</EnumItem>
+				<EnumItem Value = "71">BIOS_RTOS_ISR_PWM_IN_47</EnumItem>
+				<EnumItem Value = "72">BIOS_RTOS_ISR_PWM_IN_CC</EnumItem>
+				<EnumItem Value = "73">BIOS_RTOS_ISR_DMA_ERROR</EnumItem>
+				<EnumItem Value = "74">BIOS_RTOS_ISR_SWT0</EnumItem>
+				<EnumItem Value = "75">BIOS_RTOS_ISR_SWT1</EnumItem>
+				<EnumItem Value = "76">BIOS_RTOS_ISR_ETH</EnumItem>
+				<EnumItem Value = "77">BIOS_RTOS_ISR_LIN0_RX</EnumItem>
+				<EnumItem Value = "78">BIOS_RTOS_ISR_LIN0_TX</EnumItem>
+				<EnumItem Value = "79">BIOS_RTOS_ISR_LIN0_ERR</EnumItem>
+				<EnumItem Value = "80">BIOS_RTOS_ISR_LIN1_RX</EnumItem>
+				<EnumItem Value = "81">BIOS_RTOS_ISR_LIN1_TX</EnumItem>
+				<EnumItem Value = "82">BIOS_RTOS_ISR_LIN1_ERR</EnumItem>
+				<EnumItem Value = "83">BIOS_RTOS_ISR_LIN3_RX</EnumItem>
+				<EnumItem Value = "84">BIOS_RTOS_ISR_LIN3_TX</EnumItem>
+				<EnumItem Value = "85">BIOS_RTOS_ISR_LIN3_ERR</EnumItem>
+				<EnumItem Value = "86">BIOS_RTOS_ISR_LIN4_RX</EnumItem>
+				<EnumItem Value = "87">BIOS_RTOS_ISR_LIN4_TX</EnumItem>
+				<EnumItem Value = "88">BIOS_RTOS_ISR_LIN4_ERR</EnumItem>
+				<EnumItem Value = "89">BIOS_RTOS_ISR_FCCU_TO</EnumItem>
+				<EnumItem Value = "90">BIOS_RTOS_ISR_FCCU_ALARM</EnumItem>
+            </EnumNames>			
+            <Function>System | Platform</Function>
+        </Item>
+        
+            
+
+        <Item Name="EEPROM_State">
+            <Block>EEPROM_State</Block>
+            <Variable>RAMVariables.rap_ds_EEPROM_State</Variable>	
+            <Type>Measurement</Type>
+            <NumRows>1</NumRows>
+            <NumCols>1</NumCols>
+            <Gain>1.0</Gain>
+            <Offset>0.0</Offset>					
+            <Min>rtMinusInf</Min>
+            <Max>rtInf</Max>
+            <Unit></Unit>
+            <Help>EEPROM State on startup.</Help>
+			<Format>3.0</Format>
+            <AccessLevel>1</AccessLevel>
+            <ReadOnly>0</ReadOnly>
+            <EnumNames>
+				<EnumItem Value = "0">Initialization</EnumItem>
+				<EnumItem Value = "1">Loaded Defaults - Manual</EnumItem>
+				<EnumItem Value = "2">Loaded Defaults - After Reprogramming</EnumItem>
+				<EnumItem Value = "3">Loaded Defaults - Incorrect CRC</EnumItem>
+				<EnumItem Value = "4">Loaded Defaults - Incorrect EE Format</EnumItem>
+				<EnumItem Value = "5">Loaded Defaults - Error Reading EEPROM</EnumItem>
+				<EnumItem Value = "6">Loaded Defaults - Failed Driver Initialization</EnumItem>
+				<EnumItem Value = "7">Loaded Saved Values - After Reprogramming</EnumItem>
+				<EnumItem Value = "8">Loaded Saved Values - Normal Startup</EnumItem>
+				<EnumItem Value = "9">Loaded Saved Values - Backup Copy</EnumItem>
+				<EnumItem Value = "10">Store In Progess</EnumItem>
+				<EnumItem Value = "11">Store Attempt Failed</EnumItem>
+				<EnumItem Value = "12">Store Succeeded</EnumItem>
+            </EnumNames>			
+            <Function>System</Function>
+        </Item>
+    </Data>

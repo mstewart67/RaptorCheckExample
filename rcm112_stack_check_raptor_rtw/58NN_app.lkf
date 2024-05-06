@@ -1,0 +1,447 @@
+
+/******************************************************************************
+ * FILE: 
+ *    ppce200ht.lkf
+ *
+ * UC ARCHITECTURE:
+ *    PowerPC
+ *
+ * UC FAMILY:
+ *    SPC58
+ *
+ * DESCRIPTION:
+ *    PPCe200HighTec variant SPC58NN84 microcontroller linker file 
+ *    Memory model 'IntFLASH'
+ *
+ ******************************************************************************/
+
+HASH_SIZE =  2048;
+
+MEMORY
+{
+  /* Internal FLASH for Application code*/
+  app_desc_reg (rxw) : org = 0x01040000, len = 0x400
+
+  /* Internal FLASH for Application code*/
+  flash (rxw)     : org = 0x01040400, len = 0x15C0000 - 0x1040400
+  /* Internal SRAM */
+  sram0 (rxw)        : org = 0x40070000, len = 128k-128
+  bootmailbox  : org = 0x40090000 - 128, len = 128
+  iop_imem (rx)   : org = 0x52000000, len = 32K
+  
+  /* D_MEM_CPU_2 IOP core */
+  iop_dmem (rxw)  : org = 0x52800000, len = 112K
+  iop_stack (rxw) : org = 0x5281C000, len = 16K
+  
+  mc1_imem (rx)   : org = 0x51000000, len = 32K
+  
+  /* D_MEM_CPU_1*/
+  mc1_dmem (rxw)  : org = 0x51800000, len = 96K
+  mc1_stack (rxw) : org = 0x51818000, len = 32K
+  
+  mc0_imem (rx)   : org = 0x50000000, len = 32K
+  
+  /* D_MEM_CPU_0 Main Core 2 */
+  mc0_dmem (rxw)  : org = 0x50800000, len = 72K
+  mc0_stack (rxw) : org = 0x50812000, len = 56K
+}
+
+PROVIDE(__bios_flash_length__ = LENGTH(flash));
+PROVIDE(__bios_sram0_length__ = LENGTH(sram0));
+PROVIDE(__bios_sram2_length__ = 0 );
+PROVIDE(__bios_iop_imem_length__ = LENGTH(iop_imem));
+PROVIDE(__bios_iop_dmem_length__ = LENGTH(iop_dmem));
+PROVIDE(__bios_iop_stack_length__ = LENGTH(iop_stack));
+PROVIDE(__bios_mc1_imem_length__ = LENGTH(mc1_imem));
+PROVIDE(__bios_mc1_dmem_length__ = LENGTH(mc1_dmem));
+PROVIDE(__bios_mc1_stack_length__ = LENGTH(mc1_stack));
+PROVIDE(__bios_mc0_imem_length__ = LENGTH(mc0_imem));
+PROVIDE(__bios_mc0_dmem_length__ = LENGTH(mc0_dmem));
+PROVIDE(__bios_mc0_stack_length__ = LENGTH(mc0_stack));
+
+
+ENTRY(_start)
+
+SECTIONS
+{
+
+  /* -----------------Boot header  ---------------------------*/  
+  .app_desc : ALIGN(1024)
+  {
+   PROVIDE(__bios_flash_start_addr__ = .);
+   PROVIDE(__start_fingerprint_ = .);
+      *(.app_desc)
+   PROVIDE(__end_fingerprint = .);
+  } > app_desc_reg
+  
+  .startup : ALIGN(4) FLAGS(axvl)  {
+   PROVIDE(__flash_app_start_addr__ = .);
+    *(.startup)
+  } > flash
+  
+  /* ---------------- Vectors ------------------------------- */
+  /* Allocate the interrupt vectors */
+  Os_cpuvec : ALIGN(16384) FLAGS(axv)
+  {
+    *(Os_cpuvec)
+  } > flash
+
+  Os_intvec : ALIGN(0x1000) FLAGS(axv)
+  {
+    *(Os_intvec)
+  } > flash
+
+  /* Table is created by the crt0 with no apparent use but requires the section declaration. RTA-OS manages its own IVOR branch table as above */
+  .traptable : {
+    *(.traptable)
+  } > flash
+  
+  /* ---------------- ROM ----------------------------------- */
+
+  .text_vle.lib : FLAGS(axv)
+  {
+   *lib*.a:(.text_vle*)
+  } > flash
+  
+
+  .text_vle : ALIGN(4) FLAGS(axvl) {
+    *(.text_vle)
+    *(.text_vle.*)
+    *(.Os_text_vle)
+    *(.Os_Cat1_vle)
+    *(.init_vle)
+    *(.fini_vle)
+    *(.eini)
+  } > flash
+
+  .rodata : {
+    *(.rodata)
+    *(.rodata.*)
+  } > flash
+
+  /* Compiler version 4.6.2.0 - The addition of ALIGN(4) has been necessary in
+     some tests to avoid .data initialization issues. */
+  .copy_table_CPU2_ ALIGN(4) : {
+    PROVIDE(__copy_table_CPU2_ = .);
+    /* Absolute load address (LMA), Absolute virtual address (VMA), Size of section x in bytes */
+    LONG(LOADADDR(.iop_text)); LONG(0 + ADDR(.iop_text)); LONG(SIZEOF(.iop_text));
+    LONG(LOADADDR(.data));   LONG(0 + ADDR(.data));   LONG(SIZEOF(.data));
+    LONG(LOADADDR(.sdata));  LONG(0 + ADDR(.sdata));  LONG(SIZEOF(.sdata));
+    LONG(LOADADDR(.iop_ram_init)); LONG(0 + ADDR(.iop_ram_init)); LONG(SIZEOF(.iop_ram_init));
+    
+    LONG(-1); LONG(-1); LONG(-1);
+  } > flash
+
+   
+   .copy_table_CPU0_ ALIGN(4) : {
+      PROVIDE(__copy_table_CPU0_ = .);
+      LONG(LOADADDR(.mc0_text)); LONG(0 + ADDR(.mc0_text)); LONG(SIZEOF(.mc0_text));
+      LONG(LOADADDR(.mc0_ram_init)); LONG(0 + ADDR(.mc0_ram_init)); LONG(SIZEOF(.mc0_ram_init));
+      LONG(-1); LONG(-1); LONG(-1);
+   } > flash
+   
+   .copy_table_CPU1_ ALIGN(4) : {
+      PROVIDE(__copy_table_CPU1_ = .);
+      LONG(LOADADDR(.mc1_text)); LONG(0 + ADDR(.mc1_text)); LONG(SIZEOF(.mc1_text));
+      LONG(LOADADDR(.mc1_ram_init)); LONG(0 + ADDR(.mc1_ram_init)); LONG(SIZEOF(.mc1_ram_init));
+      LONG(-1); LONG(-1); LONG(-1);
+   } > flash
+   
+
+  /* Compiler version 4.6.2.0 - The addition of ALIGN(4) has been necessary in
+     some tests to avoid .data initialization issues. */
+  .bss_init_info ALIGN(4) : {
+    PROVIDE(__bss_init_info = .);
+    /* Absolute virtual address (VMA), Size of section x in bytes */
+    LONG(0 + ADDR(.bss));   LONG(SIZEOF(.bss));
+    LONG(0 + ADDR(.sbss));  LONG(SIZEOF(.sbss));
+    LONG(0 + ADDR(.sbss2)); LONG(SIZEOF(.sbss2));
+    LONG(0); LONG(0); LONG(0);
+  } > flash
+  
+  .iop_text : 
+  {
+      . = ALIGN(4);
+      PROVIDE(__bios_iop_imem_start_addr__ = .);
+      *(.iop_text)
+      *(.iop_text.*)
+   . = ALIGN(4);
+      PROVIDE(__bios_iop_imem_end_addr__ = .);
+   } > iop_imem AT>flash
+   .mc0_text : 
+   {
+      PROVIDE(__bios_mc0_imem_start_addr__ = .);
+      *(.mc0_text)
+      *(.mc0_text.*)
+    . = ALIGN(4);
+      PROVIDE(__bios_mc0_imem_end_addr__ = .);
+   } > mc0_imem AT>flash
+   
+   .mc1_text : 
+   {
+      PROVIDE(__bios_mc1_imem_start_addr__ = .);
+      *(.mc1_text)
+      *(.mc1_text.*)
+      . = ALIGN(4);
+      PROVIDE(__bios_mc1_imem_end_addr__ = .);
+   } > mc1_imem AT>flash
+  /* Compiler version 4.6.1.0 - The addition of ALIGN(4) has been necessary in
+     some tests to avoid .sdata initialization issues. */
+  .data  : FLAGS(awl) {
+    PROVIDE(__bios_sram0_start_addr__ = .);
+    . = ALIGN(4);
+    *(.data)
+    *(.data.*)
+    *(.ctors)
+    *(.dtors)
+    . = ALIGN(4);
+  } > sram0 AT>flash
+
+  .ee_default : FLAGS(awl)
+  {
+      *(.ee_default)
+      *(.ee_default.*)
+  } > flash
+
+  .bss (NOLOAD) : FLAGS (aw)
+  {
+    *(.bss)
+    *(.bss*)
+  } > sram0
+
+
+  /* ---------------- RAM ----------------------------------- */
+  .got2 : FLAGS(awl) { *(.got2) } > sram0
+
+  .fixup : FLAGS(awl) { *(.fixup) } > sram0
+
+  .eh_frame : FLAGS(awl) { *(.eh_frame) } > sram0
+
+  .jcr : FLAGS(awl) { *(.jcr) } > sram0
+
+  .iplt ALIGN(4) : FLAGS(awl) { *(.iplt) } > sram0
+
+  /* Compiler version 4.6.1.0 - The addition of ALIGN(4) has been necessary in
+     some tests to avoid .sdata initialization issues. */
+  .sdata ALIGN(4) : FLAGS(awsl)
+  {
+    _SDA_BASE_ = 0x8000;
+    *(.sdata)
+    *(.sdata.*)
+    . = ALIGN(4);
+  } > sram0 AT>flash
+
+  .sbss (NOLOAD) : FLAGS(aws)
+  {
+    *(.sbss)
+    *(.sbss.*)
+  PROVIDE(__bios_sram0_end_addr__ = .);
+  } > sram0
+
+  .sdata2 : FLAGS(arsl)
+  {
+    _SDA2_BASE_ = 0x8000;
+    *(.sdata2)
+    *(.sdata2.*)
+    *(.srodata)
+    *(.srodata.*)
+    . = ALIGN(4);
+  } > flash
+
+  .sbss2 (NOLOAD): FLAGS(ars)
+  {
+    *(.sbss2)
+    *(.sbss2.*)
+  } > flash 
+
+
+  .iop_ram_noinit (NOLOAD) : FLAGS(aw)
+  {
+    PROVIDE(__bios_iop_dmem_start_addr__ = .);
+    *(.iop_ram)
+    *(.iop_ram.*)
+  } > iop_dmem
+  
+  .iop_ram_init ALIGN(4) : FLAGS(awl)
+  {
+  . = ALIGN(4);
+    *(.iop_ram_init)
+    *(.iop_ram_init.*)
+    . = ALIGN(4);
+    PROVIDE(__bios_iop_dmem_end_addr__ = .);
+  } > iop_dmem AT>flash
+  
+  .mc1_ram_noinit (NOLOAD) : FLAGS(aw)
+  {
+    PROVIDE(__bios_mc1_dmem_start_addr__ = .);
+    *(.mc1_ram)
+    *(.mc1_ram.*)
+  } > mc1_dmem
+  
+  .mc1_ram_init ALIGN(4) : FLAGS(aw)
+  {
+    . = ALIGN(4);
+    *(.mc1_ram_init)
+    *(.mc1_ram_init.*)
+    . = ALIGN(4);
+    PROVIDE(__bios_mc1_dmem_end_addr__ = .);
+  } > mc1_dmem AT>flash
+  
+
+  
+  .mc0_ram_noinit (NOLOAD) : FLAGS(aw)
+  {
+    PROVIDE(__bios_mc0_dmem_start_addr__ = .);
+    *(.mc0_ram)
+    *(.mc0_ram.*)
+  } > mc0_dmem
+  
+  .mc0_ram_init ALIGN(4) : FLAGS(aw)
+  {
+    . = ALIGN(4);
+    *(.mc0_ram_init)
+    *(.mc0_ram_init.*)
+    *(.fapp_params)
+    *(.fapp_params.*)
+    . = ALIGN(4);
+  } > mc0_dmem AT>flash
+
+
+  .ee_ram_mc0  : FLAGS(awl)
+  {
+    . = ALIGN(4);
+    PROVIDE(__ee_ram_start_addr__ = .);
+    *(.ee_ram_mc0*)
+    *(.ee_ram_mc0.*)
+    . = ALIGN(4);
+    PROVIDE(__ee_ram_end_addr__ = .);
+  } > mc0_dmem AT>flash
+
+  extab      : {}> sram0
+  extabindex : {}> sram0
+
+  .rela.dyn ALIGN(4) : FLAGS(al)
+  {
+    *(.rela.dyn)
+    *(.rela.iplt)
+  } > sram0
+
+   .bootmailbox (NOLOAD)  : ALIGN(16) 
+   {
+      PROVIDE(__boot_mailbox_addr = .);
+      KEEP(*(.bootmailbox)) 
+      KEEP(*(.bootmailbox.*)) 
+   } > bootmailbox
+   
+  .iop_stack (NOLOAD) : ALIGN(16)
+  {
+    PROVIDE(__bios_iop_stack_start_addr__ = .);
+    _iop_stack_end = .;
+    . += 16384 ;
+    _iop_stack_addr = .;
+  } > iop_stack
+  .mc1_stack (NOLOAD) : ALIGN(16)
+  {
+    PROVIDE(__bios_mc1_stack_start_addr__ = .);
+    _mc1_stack_end = .;
+    . += 32768 ;
+    _mc1_stack_addr = .;
+  } > mc1_stack
+  
+  
+   .mc0_heap (NOLOAD): ALIGN(16)
+  {     
+    . = ALIGN(4);
+    PROVIDE(__bios_mc0_heap_start_addr__ = .);
+    PROVIDE(_mc0_heap_base = .); 
+    . += 2048 ; 
+    . = ALIGN(4);
+    PROVIDE(_mc0_heap_end = .); 
+    PROVIDE(__bios_mc0_heap_end_addr__ = .);
+    PROVIDE(__bios_mc0_dmem_end_addr__ = .);
+  }
+  > mc0_dmem
+  .mc0_stack (NOLOAD) : ALIGN(16)
+  { 
+    PROVIDE(__bios_mc0_stack_start_addr__ = .);
+    _mc0_stack_end = .;
+    . += 47104 ;
+    _mc0_stack_addr = .;
+  } > mc0_stack
+   
+  .raptor_data :
+  {
+     *(.romcals)
+     *(.romcals.*)
+     *(.ee_default)
+     *(.ee_default.*)
+  } > flash
+           
+   .lastAddress :
+   {
+   PROVIDE(__flash_app_end_addr__ = .);
+   PROVIDE(__bios_flash_end_addr__ = .);
+   } > flash
+}
+
+PROVIDE(__bios_flash_used__ = __bios_flash_end_addr__ -  __bios_flash_start_addr__);
+PROVIDE(__bios_sram0_used__ = __bios_sram0_end_addr__ -  __bios_sram0_start_addr__);
+PROVIDE(__bios_sram2_start_addr__ = 0);
+PROVIDE(__bios_sram2_used__ = 0 );
+PROVIDE(__bios_iop_imem_used__ = __bios_iop_imem_end_addr__ -  __bios_iop_imem_start_addr__);
+PROVIDE(__bios_iop_dmem_used__ = __bios_iop_dmem_end_addr__ -  __bios_iop_dmem_start_addr__);
+PROVIDE(__bios_iop_dmem_used__ = __bios_iop_dmem_end_addr__ -  __bios_iop_dmem_start_addr__);
+PROVIDE(__bios_mc1_imem_used__ = __bios_mc1_imem_end_addr__ -  __bios_mc1_imem_start_addr__);
+PROVIDE(__bios_mc1_dmem_used__ = __bios_mc1_dmem_end_addr__ -  __bios_mc1_dmem_start_addr__);
+PROVIDE(__bios_mc1_dmem_used__ = __bios_mc1_dmem_end_addr__ -  __bios_mc1_dmem_start_addr__);
+PROVIDE(__bios_mc0_imem_used__ = __bios_mc0_imem_end_addr__ -  __bios_mc0_imem_start_addr__);
+PROVIDE(__bios_mc0_dmem_used__ = __bios_mc0_dmem_end_addr__ -  __bios_mc0_dmem_start_addr__);
+PROVIDE(__bios_mc0_dmem_used__ = __bios_mc0_dmem_end_addr__ -  __bios_mc0_dmem_start_addr__);
+
+__heap_base__  = _mc0_heap_base;
+
+__heap_end__  = _mc0_heap_end;
+
+/* These allow access in the startup code to the section address */
+__USTACK0 = _iop_stack_addr;
+__USTACK1 = _mc1_stack_addr;
+__USTACK2 = _mc0_stack_addr;
+
+
+/* Re-label __USTACK0 */
+__USTACK = __USTACK0;
+__SP_INIT_CPU2_ = __USTACK0;
+__SP_INIT_CPU1_ = __USTACK1;
+__SP_INIT_CPU0_ = __USTACK2;
+
+/* IoP core */
+_SDA14_BASE_CPU2_ = 0x8000;
+_SDA15_BASE_CPU2_ = 0x8000;
+_SDA16_BASE_CPU2_ = 0x8000;
+_SDA17_BASE_CPU2_ = 0x8000;
+
+/* Main Core */
+_SDA14_BASE_CPU0_ = 0x8000;
+_SDA15_BASE_CPU0_ = 0x8000;
+_SDA16_BASE_CPU0_ = 0x8000;
+_SDA17_BASE_CPU0_ = 0x8000;
+
+/* Main Core 1 */
+_SDA14_BASE_CPU1_ = 0x8000;
+_SDA15_BASE_CPU1_ = 0x8000;
+_SDA16_BASE_CPU1_ = 0x8000;
+_SDA17_BASE_CPU1_ = 0x8000;
+
+/* System Level */
+_SDA14_BASE_ = 0x8000;
+_SDA15_BASE_ = 0x8000;
+_SDA16_BASE_ = 0x8000;
+_SDA17_BASE_ = 0x8000;
+
+_SDA_BASE__CPU0_ = _SDA_BASE_;
+_SDA2_BASE__CPU0_ = _SDA2_BASE_;
+
+_SDA_BASE__CPU1_ = _SDA_BASE_;
+_SDA2_BASE__CPU1_ = _SDA2_BASE_;
+_SDA2_BASE__CPU2_ = _SDA2_BASE_; 
+
