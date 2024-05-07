@@ -1,8 +1,0 @@
-### Generating code and artifacts to 'Model specific' folder structure
-### Generating code into build folder: C:\DEV_AREA\models\MATLAB2023a\rcm112_stack_check\rcm112_stack_check_raptor_rtw
-### Invoking Target Language Compiler on rcm112_stack_check.rtw
-### Using System Target File: C:\DEV_AREA\raptor\Source\build\raptor.tlc
-### Saving binary information cache.
-.
-### Processing Template Makefile: C:\DEV_AREA\raptor\Source\build\raptor.tmf
-### Created makefile C:\DEV_AREA\models\MATLAB2023a\rcm112_stack_check\rcm112_stack_check_raptor_rtw\rcm112_stack_check.mk

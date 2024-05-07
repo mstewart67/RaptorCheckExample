@@ -1,0 +1,23 @@
+// Declarative Pipeline
+pipeline {
+    agent any
+    stages {
+        stage('Setup model for build enviroment') {
+            steps {
+                runMATLABCommand(command: 'setup_build')
+            }       
+        }
+
+        stage('Build Model') {
+            steps {
+                runMATLABCommand(command: 'slbuild(\'RaptorCheckExample\');')
+            }       
+        }
+
+        stage('Run Static Analysis') {
+            steps {
+                runMATLABCommand(command: 'raptor_stack_check_run(\'RaptorCheckExample\');')
+            }       
+        }        
+    } 
+}
