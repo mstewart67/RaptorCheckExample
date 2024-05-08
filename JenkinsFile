@@ -20,7 +20,7 @@ pipeline {
 
         stage('Build Model') {
             steps {
-                runMATLABCommand(command: 'slbuild(\'RaptorCheckExample\', 'ForceTopModelBuild', true);')
+                runMATLABCommand(command: 'slbuild(\'RaptorCheckExample\', \'ForceTopModelBuild\', true);')
             }       
         }
 
