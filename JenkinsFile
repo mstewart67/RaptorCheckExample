@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Set Raptor-Dev version') {
             steps {
-                bat '"C:\\Program Files (x86)\\NewEagle\\Raptor\\raptor_conf_editor" CONFIG m:2023a.64 r:2024a_0.9.15337' 
+                bat '"C:\\Program Files (x86)\\NewEagle\\Raptor\\raptor_conf_editor" CONFIG m:2023a.64 r:2024a_0.9.15337'
             }
         }
 
@@ -20,7 +20,7 @@ pipeline {
 
         stage('Build Model') {
             steps {
-                runMATLABCommand(command: 'slbuild(\'RaptorCheckExample\');')
+                runMATLABCommand(command: 'slbuild(\'RaptorCheckExample\', 'ForceTopModelBuild', true);')
             }       
         }
 
