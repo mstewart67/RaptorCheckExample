@@ -9,7 +9,9 @@ pipeline {
     }
     stages {
         stage('Set Raptor-Dev version') {
-            sh '"C:\\Program Files (x86)\\NewEagle\\Raptor\\raptor_conf_editor" CONFIG m:2023a.64 r:2024a_0.9.15337' 
+            steps {
+                sh '"C:\\Program Files (x86)\\NewEagle\\Raptor\\raptor_conf_editor" CONFIG m:2023a.64 r:2024a_0.9.15337' 
+            }
         }
 
         stage('Setup build enviroment') {
