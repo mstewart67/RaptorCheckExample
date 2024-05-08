@@ -20,7 +20,7 @@ function rc = setup_build()
     set_param(target_blk, 'compiler', compilers{1});
 
     % Enable code generation report
-    set_param(model,GenerateReport="on");
+    set_param('RaptorCheckExample', GenerateReport="on");
 
     close_system('RaptorCheckExample');
 
