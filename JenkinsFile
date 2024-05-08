@@ -4,9 +4,7 @@
  */
 pipeline {
     agent any
-    options {
 
-    }
     stages {
         stage('Set Raptor-Dev version') {
             steps {
@@ -32,9 +30,9 @@ pipeline {
             }       
         }        
     }
-    post {
-        success {
-            /* Grab Artifacts from Build */
-        }
-    }
+    // post {
+    //     success {
+    //         /* Grab Artifacts from Build */
+    //     }
+    // }
 }
