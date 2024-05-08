@@ -9,7 +9,7 @@ function rc = setup_build()
     % Find what RCM112 Compilers are installed
     compilers = raptor_find_58NN_compilers();
     
-    if isempty(compiler)
+    if isempty(compilers)
         error('Failed to find a compiler installed for SPC58NN');
     end
 
