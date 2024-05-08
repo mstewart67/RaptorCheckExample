@@ -22,6 +22,8 @@ function rc = setup_build()
     % Enable code generation report
     set_param('RaptorCheckExample', GenerateReport="on");
 
+    save_system('RaptorCheckExample');
+
     close_system('RaptorCheckExample');
 
     disp('Finished setting up model.');

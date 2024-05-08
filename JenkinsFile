@@ -2,7 +2,7 @@
 pipeline {
     agent any
     stages {
-        stage('Setup model for build enviroment') {
+        stage('Setup MATLAB build enviroment') {
             steps {
                 runMATLABCommand(command: 'setup_build')
             }       
