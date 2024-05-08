@@ -1,8 +1,18 @@
-// Declarative Pipeline
+/* Declarative Pipeline
+ * 
+ * 
+ */
 pipeline {
     agent any
+    options {
+
+    }
     stages {
-        stage('Setup MATLAB build enviroment') {
+        stage('Set Raptor-Dev version') {
+            sh '"C:\\Program Files (x86)\\NewEagle\\Raptor\\raptor_conf_editor" CONFIG m:2023a.64 r:2024a_0.9.15337' 
+        }
+
+        stage('Setup build enviroment') {
             steps {
                 runMATLABCommand(command: 'setup_build')
             }       
@@ -19,5 +29,10 @@ pipeline {
                 runMATLABCommand(command: 'raptor_stack_check_run(\'RaptorCheckExample\');')
             }       
         }        
-    } 
+    }
+    post {
+        success {
+            /* Grab Artifacts from Build */
+        }
+    }
 }
