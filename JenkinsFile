@@ -1,6 +1,9 @@
 /* Declarative Pipeline
  * 
- * 
+ * Example Jenkinsfiles using declarative pipeline syntax to compile a Raptor-Dev model, generate reports, run static analysis, archive results, execute tests, archive
+ * results. This file will require multiple MathWorks Toolboxes and Raptor licenses to execute. Each section will have a comment with the required license. This file 
+ * utilizes the MathWorks Jenkins plugin, only the Run MATLAB Command will be used here. MATLAB build scripts can redundant functionality to a JenkinsFiles, the unit test 
+ * functionality requires the Simulink Test license. There is more control to the user writing the bootstrap test executer script. 
  */
 pipeline {
     agent any
@@ -24,15 +27,23 @@ pipeline {
             }       
         }
 
-        stage('Run Static Analysis') {
-            steps {
-                runMATLABCommand(command: 'raptor_stack_check_run(\'RaptorCheckExample\');')
-            }       
-        }        
+        // Comment out for now while dev
+        // stage('Run Static Analysis') {
+        //     steps {
+        //         runMATLABCommand(command: 'raptor_stack_check_run(\'RaptorCheckExample\');')
+        //     }
+        // }
     }
-    // post {
-    //     success {
-    //         /* Grab Artifacts from Build */
-    //     }
-    // }
+    post {
+        success {
+            /* Grab Artifacts from Build */
+            publishHTML (target : [allowMissing: false,
+                 alwaysLinkToLastBuild: true,
+                 keepAll: true,
+                 reportDir: 'RaptorCheckExample_raptor_rtw\\html',
+                 reportFiles: 'index.html',
+                 reportName: 'Code Generation Report',
+                 reportTitles: 'Code Generation Report'])
+        }
+    }
 }
