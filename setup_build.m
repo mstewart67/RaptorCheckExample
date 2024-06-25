@@ -34,4 +34,11 @@ function rc = setup_build()
 
     disp('Finished setting up model.');
 
+    % Compile our model
+    disp('Running Build')
+
+    slbuild('RaptorCheckExample')
+
+    disp('Finished Running Build')
+
 end
